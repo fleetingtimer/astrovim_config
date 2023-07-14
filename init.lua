@@ -33,7 +33,7 @@ return {
       format_on_save = {
         enabled = true, -- enable or disable format on save globally
         allow_filetypes = { -- enable format on save for specified filetypes only
-          -- "go",
+          "go",
         },
         ignore_filetypes = { -- disable format on save for specified filetypes
           -- "python",
@@ -64,6 +64,19 @@ return {
       },
     },
   },
+
+  
+  options = {
+    opt = {
+      -- some existing code in here ...
+    },
+    g = {
+      -- some existing code in here ...
+      copilot_no_tab_map = true,
+      copilot_assume_mapped = true,
+    },
+  },
+
 
   -- This function is run last and is a good place to configuring
   -- augroups/autocommands and custom filetypes also this just pure lua so
