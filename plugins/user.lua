@@ -33,9 +33,17 @@ return {
     event = "VeryLazy",
   },
   {
-    "github/copilot.vim",
-    event = "VeryLazy",
+    "zbirenbaum/copilot.lua",
+    cmd = "Copilot",
+    event = "InsertEnter",
+    config = function()
+      require("copilot").setup({})
+    end,
   },
+  -- {
+  --   "github/copilot.vim",
+  --   event = "VeryLazy",
+  -- },
   {
     "ray-x/go.nvim",
     dependencies = {  -- optional packages
@@ -49,6 +57,22 @@ return {
     event = {"CmdlineEnter"},
     ft = {"go", 'gomod'},
     build = ':lua require("go.install").update_all_sync()' -- if you need to install/update all binaries
+  },
+  {
+    "Dhanus3133/LeetBuddy.nvim",
+    dependencies = {
+      "nvim-lua/plenary.nvim",
+      "nvim-telescope/telescope.nvim",
+    },
+    config = function()
+      require("leetbuddy").setup({})
+    end,
+    keys = {
+      { "<leader>Lq", "<cmd>LBQuestions<cr>", desc = "List Questions" },
+      { "<leader>Ll", "<cmd>LBQuestion<cr>", desc = "View Question" },
+      { "<leader>Lr", "<cmd>LBReset<cr>", desc = "Reset Code" },
+      { "<leader>Lt", "<cmd>LBTest<cr>", desc = "Run Code" },
+      { "<leader>Ls", "<cmd>LBSubmit<cr>", desc = "Submit Code" },
+    },
   }
-
 }
