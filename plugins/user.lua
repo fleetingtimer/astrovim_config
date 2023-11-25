@@ -1,5 +1,6 @@
 -- TODO: test
 
+local leet_arg = "leetcode.nvim"
 
 return {
   -- You can also add new plugins here as well:
@@ -59,20 +60,21 @@ return {
     build = ':lua require("go.install").update_all_sync()' -- if you need to install/update all binaries
   },
   {
-    "Dhanus3133/LeetBuddy.nvim",
+    "kawre/leetcode.nvim",
+    build = ":TSUpdate html",
     dependencies = {
-      "nvim-lua/plenary.nvim",
-      "nvim-telescope/telescope.nvim",
+        "nvim-telescope/telescope.nvim",
+        "nvim-lua/plenary.nvim", -- required by telescope
+        "MunifTanjim/nui.nvim",
+
+        -- optional
+        "nvim-treesitter/nvim-treesitter",
+        "rcarriga/nvim-notify",
+        "nvim-tree/nvim-web-devicons",
     },
-    config = function()
-      require("leetbuddy").setup({})
-    end,
-    keys = {
-      { "<leader>Lq", "<cmd>LBQuestions<cr>", desc = "List Questions" },
-      { "<leader>Ll", "<cmd>LBQuestion<cr>", desc = "View Question" },
-      { "<leader>Lr", "<cmd>LBReset<cr>", desc = "Reset Code" },
-      { "<leader>Lt", "<cmd>LBTest<cr>", desc = "Run Code" },
-      { "<leader>Ls", "<cmd>LBSubmit<cr>", desc = "Submit Code" },
+    lazy = leet_arg ~= vim.fn.argv()[1],
+    opts = {
+      arg = leet_arg,
     },
   }
 }
