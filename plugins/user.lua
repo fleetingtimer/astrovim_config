@@ -75,6 +75,8 @@ return {
     lazy = leet_arg ~= vim.fn.argv()[1],
     opts = {
       arg = leet_arg,
+      ---@type lc.lang
+      lang = "golang",
     },
   }
 }
